@@ -358,62 +358,19 @@
     <div id="footer-text">עודכן לאחרונה: —</div>
     <a
       class="edit-link"
-      href="https://github.com/oren3443-hue/portfolio-hub/edit/main/index.html"
+      href="https://github.com/oren3443-hue/portfolio-hub/edit/main/overrides.json"
       target="_blank"
       rel="noopener noreferrer"
-      title="פותח את הקובץ בעורך של GitHub. שמירה דורשת הרשאת כתיבה לריפו.">
+      title="פותח את overrides.json בעורך של GitHub. שמירה דורשת הרשאת כתיבה לריפו.">
       <span class="edit-link-icon" aria-hidden="true">✏️</span>
-      <span>עריכת כותרות ב-GitHub</span>
+      <span>עריכת כותרות בעברית</span>
     </a>
   </footer>
 
   <script>
-    // ========================================================
-    // Hebrew display overrides — edit here to add or polish.
-    // Keyed by the repository name on GitHub.
-    // ========================================================
-    const OVERRIDES = {
-      'portfolio-hub': {
-        title: 'תיק העבודות',
-        description: 'מרכז הקישורים לכל הפרויקטים',
-        icon: '🗂️'
-      },
-      'payslip-manager': {
-        title: 'מנהל תלושי שכר',
-        description: 'פיצול, מיון ושליחה אוטומטית של תלושים',
-        icon: '💰'
-      },
-      'pension-eligibility-tool': {
-        title: 'בודק זכאות פנסיה',
-        description: 'בדיקת זכאות לפנסיה מתוך תלושי שכר',
-        icon: '📋'
-      },
-      'recruiter-sender': {
-        title: 'שליחת WhatsApp לגיוס',
-        description: 'הודעות תבנית Glassix ללידים מ-Facebook',
-        icon: '📱'
-      },
-      'payroll-audit': {
-        title: 'ביקורת שכר',
-        description: 'בדיקת פערים בין נוכחות לתלושי שכר',
-        icon: '🧾'
-      },
-      'holidays-eligibility-2026': {
-        title: 'זכאות חגים 2026',
-        description: 'מחשבון הטבת חג פסח לשנת 2026',
-        icon: '🎉'
-      },
-      'israeli-severance-calculator': {
-        title: 'מחשבון פיצויי פיטורים',
-        description: 'חישוב פיצויים לפי החוק הישראלי, כולל יבוא Excel ממיכפל',
-        icon: '💼'
-      },
-      'payslip-tool': {
-        title: 'כלי תלושים',
-        description: 'כלי עזר לעבודה עם תלושי שכר',
-        icon: '🛠️'
-      }
-    };
+    // Hebrew display overrides — loaded from overrides.json at runtime.
+    // To edit titles/descriptions/icons, edit that file (linked from the footer).
+    let OVERRIDES = {};
 
     // Deterministic pleasant gradient per project name
     function hueFromName(name) {
@@ -523,9 +480,21 @@
     async function load() {
       showSkeleton();
       try {
-        const res = await fetch('./projects.json', { cache: 'no-cache' });
-        if (!res.ok) throw new Error('HTTP ' + res.status);
-        const data = await res.json();
+        const [projectsRes, overridesRes] = await Promise.all([
+          fetch('./projects.json', { cache: 'no-cache' }),
+          fetch('./overrides.json', { cache: 'no-cache' }).catch(() => null)
+        ]);
+
+        if (!projectsRes.ok) throw new Error('HTTP ' + projectsRes.status);
+        const data = await projectsRes.json();
+
+        if (overridesRes && overridesRes.ok) {
+          try {
+            OVERRIDES = await overridesRes.json();
+          } catch (e) {
+            console.warn('overrides.json parse failed, ignoring:', e);
+          }
+        }
 
         allProjects = Array.isArray(data.projects) ? data.projects : [];
 
