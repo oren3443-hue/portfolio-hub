@@ -1,0 +1,19 @@
+{
+  "lastUpdated": "2026-05-18T00:00:00Z",
+  "owner": {
+    "name": "Oren",
+    "tagline": "אורן - אוטומציות ופרויקטי AI",
+    "githubUsername": "oren3443-hue"
+  },
+  "projects": [
+    {
+      "name": "example-project",
+      "description": "Example description — will be replaced after the first n8n run",
+      "url": "https://oren3443-hue.github.io/example-project/",
+      "repoUrl": "https://github.com/oren3443-hue/example-project",
+      "language": "JavaScript",
+      "stars": 0,
+      "updatedAt": "2026-05-18T00:00:00Z"
+    }
+  ]
+}

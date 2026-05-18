@@ -1,0 +1,237 @@
+{
+  "name": "Portfolio Hub - Sync projects.json",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "a1111111-1111-4111-a111-111111111111",
+      "name": "Manual Trigger",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [240, 300]
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "=https://api.github.com/users/{{$env.GITHUB_USERNAME}}/repos?per_page=100&sort=updated",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{$env.GITHUB_TOKEN}}"
+            },
+            {
+              "name": "Accept",
+              "value": "application/vnd.github+json"
+            },
+            {
+              "name": "User-Agent",
+              "value": "n8n-portfolio-sync"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "b2222222-2222-4222-a222-222222222222",
+      "name": "List Repos",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [440, 300]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose"
+          },
+          "conditions": [
+            {
+              "id": "c1c1c1c1-c1c1-4c1c-ac1c-c1c1c1c1c1c1",
+              "leftValue": "={{ $json.has_pages }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            },
+            {
+              "id": "c2c2c2c2-c2c2-4c2c-ac2c-c2c2c2c2c2c2",
+              "leftValue": "={{ $json.fork }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "false",
+                "singleValue": true
+              }
+            },
+            {
+              "id": "c3c3c3c3-c3c3-4c3c-ac3c-c3c3c3c3c3c3",
+              "leftValue": "={{ $json.archived }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "false",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "c3333333-3333-4333-a333-333333333333",
+      "name": "Filter Pages Only",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [640, 300]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "// =====================================================\n// CONFIGURATION — EDIT THESE VALUES IF NEEDED\n// =====================================================\nconst OWNER_NAME = \"Oren\";\nconst OWNER_TAGLINE = \"אורן - אוטומציות ופרויקטי AI\";\n// =====================================================\n\n// Pull every filtered repo from the previous node\nconst repos = $input.all().map(item => item.json);\n\n// Map each repo to a project object for the portfolio\nconst projects = repos.map(repo => ({\n  name: repo.name,\n  description: repo.description || \"No description\",\n  url: `https://${repo.owner.login}.github.io/${repo.name}/`,\n  repoUrl: repo.html_url,\n  language: repo.language || \"Unknown\",\n  stars: repo.stargazers_count || 0,\n  updatedAt: repo.updated_at\n}));\n\n// Wrapper object that mirrors the projects.json schema\nconst result = {\n  lastUpdated: new Date().toISOString(),\n  owner: {\n    name: OWNER_NAME,\n    tagline: OWNER_TAGLINE,\n    githubUsername: $env.GITHUB_USERNAME\n  },\n  projects: projects\n};\n\n// Serialize once, then base64 for the GitHub Contents API\nconst content = JSON.stringify(result, null, 2);\nconst contentBase64 = Buffer.from(content, 'utf-8').toString('base64');\n\nreturn [{\n  json: {\n    content: content,\n    contentBase64: contentBase64\n  }\n}];"
+      },
+      "id": "d4444444-4444-4444-a444-444444444444",
+      "name": "Build JSON",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [840, 300]
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "=https://api.github.com/repos/{{$env.GITHUB_USERNAME}}/portfolio-hub/contents/projects.json",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{$env.GITHUB_TOKEN}}"
+            },
+            {
+              "name": "Accept",
+              "value": "application/vnd.github+json"
+            },
+            {
+              "name": "User-Agent",
+              "value": "n8n-portfolio-sync"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "e5555555-5555-4555-a555-555555555555",
+      "name": "Get Current File SHA",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1040, 300],
+      "continueOnFail": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "method": "PUT",
+        "url": "=https://api.github.com/repos/{{$env.GITHUB_USERNAME}}/portfolio-hub/contents/projects.json",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{$env.GITHUB_TOKEN}}"
+            },
+            {
+              "name": "Accept",
+              "value": "application/vnd.github+json"
+            },
+            {
+              "name": "User-Agent",
+              "value": "n8n-portfolio-sync"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "json",
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ message: \"Auto-update projects.json via n8n\", content: $('Build JSON').item.json.contentBase64, ...($('Get Current File SHA').item.json.sha ? { sha: $('Get Current File SHA').item.json.sha } : {}) }) }}",
+        "options": {}
+      },
+      "id": "f6666666-6666-4666-a666-666666666666",
+      "name": "Update File",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1240, 300]
+    }
+  ],
+  "connections": {
+    "Manual Trigger": {
+      "main": [
+        [
+          {
+            "node": "List Repos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "List Repos": {
+      "main": [
+        [
+          {
+            "node": "Filter Pages Only",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter Pages Only": {
+      "main": [
+        [
+          {
+            "node": "Build JSON",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build JSON": {
+      "main": [
+        [
+          {
+            "node": "Get Current File SHA",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Current File SHA": {
+      "main": [
+        [
+          {
+            "node": "Update File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "a0000000-0000-4000-a000-000000000000",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "id": "portfolio-hub-sync",
+  "tags": [],
+  "pinData": {},
+  "staticData": null,
+  "triggerCount": 0
+}

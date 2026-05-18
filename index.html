@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>אורן - אוטומציות ופרויקטי AI</title>
+  <style>
+    :root {
+      --bg: #ffffff;
+      --bg-card: #ffffff;
+      --bg-sticky: rgba(255, 255, 255, 0.85);
+      --text: #1f2328;
+      --text-muted: #59636e;
+      --border: #d1d9e0;
+      --border-strong: #afb8c1;
+      --accent: #0969da;
+      --skeleton-base: #f0f3f6;
+      --skeleton-shine: #e6eaef;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0d1117;
+        --bg-card: #151b23;
+        --bg-sticky: rgba(13, 17, 23, 0.85);
+        --text: #f0f6fc;
+        --text-muted: #9198a1;
+        --border: #2a313c;
+        --border-strong: #3d444d;
+        --accent: #4493f8;
+        --skeleton-base: #1a2029;
+        --skeleton-shine: #232a35;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans Hebrew", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      padding: 3rem 1.5rem 2rem;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+    }
+
+    header h1 {
+      margin: 0 0 0.5rem;
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    header p {
+      margin: 0;
+      color: var(--text-muted);
+      font-size: 1.05rem;
+    }
+
+    .search-wrap {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      padding: 1rem 1.5rem;
+      background: var(--bg-sticky);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .search-wrap input {
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto;
+      display: block;
+      padding: 0.65rem 1rem;
+      font-size: 1rem;
+      font-family: inherit;
+      color: var(--text);
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      outline: none;
+      transition: border-color 0.15s;
+    }
+
+    .search-wrap input:focus {
+      border-color: var(--accent);
+    }
+
+    main {
+      flex: 1;
+      padding: 1.5rem;
+      max-width: 1200px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1rem;
+    }
+
+    .card {
+      display: flex;
+      flex-direction: column;
+      padding: 1.25rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      text-decoration: none;
+      color: inherit;
+      transition: border-color 0.15s, transform 0.15s;
+    }
+
+    .card:hover,
+    .card:focus-visible {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+      outline: none;
+    }
+
+    .card h3 {
+      margin: 0 0 0.5rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+      word-break: break-word;
+    }
+
+    .card .desc {
+      margin: 0 0 1rem;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      flex: 1;
+    }
+
+    .card .meta {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .lang-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 2px 10px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      color: var(--text);
+      background: var(--skeleton-base);
+    }
+
+    .lang-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    .stars {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .updated {
+      margin-inline-start: auto;
+    }
+
+    .skeleton-card {
+      height: 180px;
+      border-radius: 12px;
+      background: linear-gradient(90deg, var(--skeleton-base) 0%, var(--skeleton-shine) 50%, var(--skeleton-base) 100%);
+      background-size: 200% 100%;
+      animation: shimmer 1.5s infinite linear;
+    }
+
+    @keyframes shimmer {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+
+    .error {
+      text-align: center;
+      padding: 3rem 1rem;
+      color: var(--text-muted);
+    }
+
+    .error h2 {
+      color: var(--text);
+      margin: 0 0 0.5rem;
+    }
+
+    .empty {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 2rem;
+      color: var(--text-muted);
+    }
+
+    footer {
+      padding: 2rem 1.5rem;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      border-top: 1px solid var(--border);
+      margin-top: 2rem;
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 480px) {
+      header { padding: 2rem 1rem 1.5rem; }
+      .search-wrap { padding: 0.75rem 1rem; }
+      main { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>אורן - אוטומציות ופרויקטי AI</h1>
+    <p id="tagline">טוען...</p>
+  </header>
+
+  <div class="search-wrap">
+    <input
+      type="search"
+      id="search"
+      placeholder="חיפוש פרויקט…"
+      aria-label="חיפוש פרויקט"
+      autocomplete="off">
+  </div>
+
+  <main>
+    <div class="grid" id="grid" aria-live="polite"></div>
+  </main>
+
+  <footer>
+    <div id="footer-text">עודכן לאחרונה: —</div>
+  </footer>
+
+  <script>
+    // GitHub language colors (most common languages)
+    const LANG_COLORS = {
+      JavaScript: '#f1e05a',
+      TypeScript: '#3178c6',
+      Python: '#3572A5',
+      HTML: '#e34c26',
+      CSS: '#563d7c',
+      SCSS: '#c6538c',
+      Java: '#b07219',
+      'C++': '#f34b7d',
+      C: '#555555',
+      'C#': '#178600',
+      Go: '#00ADD8',
+      Rust: '#dea584',
+      Ruby: '#701516',
+      PHP: '#4F5D95',
+      Swift: '#F05138',
+      Kotlin: '#A97BFF',
+      Shell: '#89e051',
+      Vue: '#41b883',
+      Svelte: '#ff3e00',
+      Dart: '#00B4AB'
+    };
+
+    const grid = document.getElementById('grid');
+    const searchInput = document.getElementById('search');
+    const taglineEl = document.getElementById('tagline');
+    const footerText = document.getElementById('footer-text');
+
+    let allProjects = [];
+
+    function showSkeleton() {
+      grid.innerHTML = '';
+      for (let i = 0; i < 6; i++) {
+        const sk = document.createElement('div');
+        sk.className = 'skeleton-card';
+        grid.appendChild(sk);
+      }
+    }
+
+    function showError() {
+      grid.innerHTML = `
+        <div class="error" style="grid-column: 1 / -1;">
+          <h2>אופס</h2>
+          <p>לא הצלחנו לטעון את הפרויקטים. נסה לרענן.</p>
+        </div>`;
+    }
+
+    function formatDate(iso) {
+      try {
+        const d = new Date(iso);
+        return new Intl.DateTimeFormat('he-IL', {
+          year: 'numeric', month: 'long', day: 'numeric'
+        }).format(d);
+      } catch {
+        return iso;
+      }
+    }
+
+    function escapeHtml(str) {
+      const div = document.createElement('div');
+      div.textContent = str ?? '';
+      return div.innerHTML;
+    }
+
+    function langBadge(language) {
+      const color = LANG_COLORS[language] || '#888888';
+      return `
+        <span class="lang-badge">
+          <span class="lang-dot" style="background:${color}"></span>
+          ${escapeHtml(language || 'לא ידוע')}
+        </span>`;
+    }
+
+    function renderCard(project) {
+      const safeName = escapeHtml(project.name);
+      const safeDesc = escapeHtml(project.description || 'אין תיאור');
+      const safeUrl = encodeURI(project.url || '#');
+      const stars = Number(project.stars) || 0;
+      return `
+        <a class="card" href="${safeUrl}" target="_blank" rel="noopener noreferrer">
+          <h3>${safeName}</h3>
+          <p class="desc">${safeDesc}</p>
+          <div class="meta">
+            ${langBadge(project.language)}
+            <span class="stars">⭐ ${stars}</span>
+            <span class="updated">${formatDate(project.updatedAt)}</span>
+          </div>
+        </a>`;
+    }
+
+    function renderProjects(projects) {
+      if (!projects.length) {
+        grid.innerHTML = `<div class="empty">לא נמצאו פרויקטים תואמים.</div>`;
+        return;
+      }
+      grid.innerHTML = projects.map(renderCard).join('');
+    }
+
+    function applyFilter() {
+      const q = searchInput.value.trim().toLowerCase();
+      if (!q) {
+        renderProjects(allProjects);
+        return;
+      }
+      const filtered = allProjects.filter(p => {
+        const name = (p.name || '').toLowerCase();
+        const desc = (p.description || '').toLowerCase();
+        return name.includes(q) || desc.includes(q);
+      });
+      renderProjects(filtered);
+    }
+
+    async function load() {
+      showSkeleton();
+      try {
+        const res = await fetch('./projects.json', { cache: 'no-cache' });
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        const data = await res.json();
+
+        if (data.owner?.tagline) {
+          taglineEl.textContent = data.owner.tagline;
+        } else {
+          taglineEl.textContent = '';
+        }
+
+        if (data.lastUpdated) {
+          footerText.textContent = 'עודכן לאחרונה: ' + formatDate(data.lastUpdated);
+        }
+
+        allProjects = Array.isArray(data.projects) ? data.projects : [];
+        renderProjects(allProjects);
+      } catch (err) {
+        console.error('Failed to load projects.json:', err);
+        taglineEl.textContent = '';
+        showError();
+      }
+    }
+
+    searchInput.addEventListener('input', applyFilter);
+    document.addEventListener('DOMContentLoaded', load);
+  </script>
+</body>
+</html>
