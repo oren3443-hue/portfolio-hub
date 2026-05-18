@@ -1,0 +1,66 @@
+name: Sync projects.json
+
+on:
+  schedule:
+    - cron: '0 3 * * *'
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/sync-projects.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-projects
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      USERNAME: oren3443-hue
+      OWNER_NAME: Oren
+      OWNER_TAGLINE: "אורן - אוטומציות ופרויקטי AI"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build projects.json
+        run: |
+          set -euo pipefail
+          NOW=$(date -u +%Y-%m-%dT%H:%M:%SZ)
+          gh api "/users/${USERNAME}/repos?per_page=100&sort=updated" \
+            | jq --arg now "$NOW" \
+                 --arg user "$USERNAME" \
+                 --arg name "$OWNER_NAME" \
+                 --arg tagline "$OWNER_TAGLINE" '{
+                   lastUpdated: $now,
+                   owner: { name: $name, tagline: $tagline, githubUsername: $user },
+                   projects: [.[] | select(.has_pages == true and .fork == false and .archived == false) | {
+                     name: .name,
+                     description: (.description // "No description"),
+                     url: ("https://" + .owner.login + ".github.io/" + .name + "/"),
+                     repoUrl: .html_url,
+                     language: (.language // "Unknown"),
+                     stars: .stargazers_count,
+                     updatedAt: .updated_at
+                   }]
+                 }' > projects.json
+          echo "Generated projects.json:"
+          jq '.projects | length as $n | "Total projects: \($n)"' projects.json
+
+      - name: Commit and push if changed
+        run: |
+          set -euo pipefail
+          if git diff --quiet -- projects.json; then
+            echo "No changes to projects.json — skipping commit."
+            exit 0
+          fi
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add projects.json
+          git commit -m "Auto-update projects.json"
+          git push

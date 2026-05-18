@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-05-18T00:00:00Z",
+  "lastUpdated": "2026-05-18T15:07:20Z",
   "owner": {
     "name": "Oren",
     "tagline": "אורן - אוטומציות ופרויקטי AI",
@@ -7,13 +7,67 @@
   },
   "projects": [
     {
-      "name": "example-project",
-      "description": "Example description — will be replaced after the first n8n run",
-      "url": "https://oren3443-hue.github.io/example-project/",
-      "repoUrl": "https://github.com/oren3443-hue/example-project",
+      "name": "portfolio-hub",
+      "description": "Auto-updating portfolio hub powered by GitHub Pages + n8n",
+      "url": "https://oren3443-hue.github.io/portfolio-hub/",
+      "repoUrl": "https://github.com/oren3443-hue/portfolio-hub",
+      "language": "HTML",
+      "stars": 0,
+      "updatedAt": "2026-05-18T15:02:34Z"
+    },
+    {
+      "name": "payslip-manager",
+      "description": "מערכת ניהול תלושי שכר - פיצול, מיון ושליחה",
+      "url": "https://oren3443-hue.github.io/payslip-manager/",
+      "repoUrl": "https://github.com/oren3443-hue/payslip-manager",
+      "language": "HTML",
+      "stars": 0,
+      "updatedAt": "2026-05-14T00:20:56Z"
+    },
+    {
+      "name": "pension-eligibility-tool",
+      "description": "Pension eligibility review tool for Israeli payroll",
+      "url": "https://oren3443-hue.github.io/pension-eligibility-tool/",
+      "repoUrl": "https://github.com/oren3443-hue/pension-eligibility-tool",
+      "language": "TypeScript",
+      "stars": 0,
+      "updatedAt": "2026-05-12T16:59:44Z"
+    },
+    {
+      "name": "recruiter-sender",
+      "description": "Recruiter UI for sending Glassix WhatsApp template messages to FB leads from Google Sheets",
+      "url": "https://oren3443-hue.github.io/recruiter-sender/",
+      "repoUrl": "https://github.com/oren3443-hue/recruiter-sender",
       "language": "JavaScript",
       "stars": 0,
-      "updatedAt": "2026-05-18T00:00:00Z"
+      "updatedAt": "2026-05-06T00:15:07Z"
+    },
+    {
+      "name": "payroll-audit",
+      "description": "ביקורת שכר — אתר client-side לבדיקת פערים בין נוכחות לתלושי שכר",
+      "url": "https://oren3443-hue.github.io/payroll-audit/",
+      "repoUrl": "https://github.com/oren3443-hue/payroll-audit",
+      "language": "TypeScript",
+      "stars": 0,
+      "updatedAt": "2026-05-05T22:48:42Z"
+    },
+    {
+      "name": "holidays-eligibility-2026",
+      "description": "Pesach eligibility calculator 2026 - static site",
+      "url": "https://oren3443-hue.github.io/holidays-eligibility-2026/",
+      "repoUrl": "https://github.com/oren3443-hue/holidays-eligibility-2026",
+      "language": "JavaScript",
+      "stars": 0,
+      "updatedAt": "2026-04-27T18:19:43Z"
+    },
+    {
+      "name": "payslip-tool",
+      "description": "No description",
+      "url": "https://oren3443-hue.github.io/payslip-tool/",
+      "repoUrl": "https://github.com/oren3443-hue/payslip-tool",
+      "language": "Unknown",
+      "stars": 0,
+      "updatedAt": "2026-04-15T22:35:14Z"
     }
   ]
 }
