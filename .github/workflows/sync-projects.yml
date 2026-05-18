@@ -24,6 +24,8 @@ jobs:
       USERNAME: oren3443-hue
       OWNER_NAME: Oren
       OWNER_TAGLINE: "אורן - אוטומציות ופרויקטי AI"
+      # Repos to hide from the portfolio (e.g. the portfolio site itself, deprecated tools)
+      EXCLUDE_REPOS: '["portfolio-hub","payslip-tool"]'
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -36,10 +38,16 @@ jobs:
             | jq --arg now "$NOW" \
                  --arg user "$USERNAME" \
                  --arg name "$OWNER_NAME" \
-                 --arg tagline "$OWNER_TAGLINE" '{
+                 --arg tagline "$OWNER_TAGLINE" \
+                 --argjson exclude "$EXCLUDE_REPOS" '{
                    lastUpdated: $now,
                    owner: { name: $name, tagline: $tagline, githubUsername: $user },
-                   projects: [.[] | select(.has_pages == true and .fork == false and .archived == false) | {
+                   projects: [.[] | select(
+                     .has_pages == true
+                     and .fork == false
+                     and .archived == false
+                     and (.name as $n | $exclude | index($n) | not)
+                   ) | {
                      name: .name,
                      description: (.description // "No description"),
                      url: ("https://" + .owner.login + ".github.io/" + .name + "/"),

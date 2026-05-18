@@ -1,20 +1,11 @@
 {
-  "lastUpdated": "2026-05-18T15:08:07Z",
+  "lastUpdated": "2026-05-18T15:22:12Z",
   "owner": {
     "name": "Oren",
     "tagline": "אורן - אוטומציות ופרויקטי AI",
     "githubUsername": "oren3443-hue"
   },
   "projects": [
-    {
-      "name": "portfolio-hub",
-      "description": "Auto-updating portfolio hub powered by GitHub Pages + n8n",
-      "url": "https://oren3443-hue.github.io/portfolio-hub/",
-      "repoUrl": "https://github.com/oren3443-hue/portfolio-hub",
-      "language": "HTML",
-      "stars": 0,
-      "updatedAt": "2026-05-18T15:02:34Z"
-    },
     {
       "name": "payslip-manager",
       "description": "מערכת ניהול תלושי שכר - פיצול, מיון ושליחה",
@@ -59,15 +50,6 @@
       "language": "JavaScript",
       "stars": 0,
       "updatedAt": "2026-04-27T18:19:43Z"
-    },
-    {
-      "name": "payslip-tool",
-      "description": "No description",
-      "url": "https://oren3443-hue.github.io/payslip-tool/",
-      "repoUrl": "https://github.com/oren3443-hue/payslip-tool",
-      "language": "Unknown",
-      "stars": 0,
-      "updatedAt": "2026-04-15T22:35:14Z"
     }
   ]
 }
