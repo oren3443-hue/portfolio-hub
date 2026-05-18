@@ -1,11 +1,20 @@
 {
-  "lastUpdated": "2026-05-18T15:22:44Z",
+  "lastUpdated": "2026-05-18T16:43:26Z",
   "owner": {
     "name": "Oren",
     "tagline": "אורן - אוטומציות ופרויקטי AI",
     "githubUsername": "oren3443-hue"
   },
   "projects": [
+    {
+      "name": "israeli-severance-calculator",
+      "description": "מחשבון פיצויי פיטורים לפי החוק הישראלי – לחשבי שכר ויועצים. תומך ביבוא Excel ממיכפל.",
+      "url": "https://oren3443-hue.github.io/israeli-severance-calculator/",
+      "repoUrl": "https://github.com/oren3443-hue/israeli-severance-calculator",
+      "language": "JavaScript",
+      "stars": 0,
+      "updatedAt": "2026-05-18T16:40:10Z"
+    },
     {
       "name": "payslip-manager",
       "description": "מערכת ניהול תלושי שכר - פיצול, מיון ושליחה",
