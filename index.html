@@ -375,12 +375,12 @@
       </a>
       <a
         class="edit-link"
-        href="https://github.com/oren3443-hue/portfolio-hub/edit/main/links.json"
+        href="https://github.com/oren3443-hue/portfolio-hub/actions/workflows/sync-projects.yml"
         target="_blank"
         rel="noopener noreferrer"
-        title="פותח את links.json בעורך של GitHub. שמירה דורשת הרשאת כתיבה לריפו.">
-        <span class="edit-link-icon" aria-hidden="true">➕</span>
-        <span>הוספת אתרים חיצוניים</span>
+        title="פותח את עמוד ה-Actions. לחיצה על 'Run workflow' תסנכרן ריפוז חדשים עם Pages.">
+        <span class="edit-link-icon" aria-hidden="true">🔄</span>
+        <span>סנכרון אתרים חדשים</span>
       </a>
     </div>
   </footer>
@@ -441,16 +441,6 @@
     }
 
     function applyOverride(project) {
-      // Manual links (from links.json) already carry their final fields
-      if (project.__manual) {
-        return {
-          name: project.name,
-          title: project.title || project.url,
-          description: project.description || '',
-          icon: project.icon || '🔗',
-          url: project.url
-        };
-      }
       const ov = OVERRIDES[project.name] || {};
       return {
         name: project.name,
@@ -508,10 +498,9 @@
     async function load() {
       showSkeleton();
       try {
-        const [projectsRes, overridesRes, linksRes] = await Promise.all([
+        const [projectsRes, overridesRes] = await Promise.all([
           fetch('./projects.json', { cache: 'no-cache' }),
-          fetch('./overrides.json', { cache: 'no-cache' }).catch(() => null),
-          fetch('./links.json', { cache: 'no-cache' }).catch(() => null)
+          fetch('./overrides.json', { cache: 'no-cache' }).catch(() => null)
         ]);
 
         if (!projectsRes.ok) throw new Error('HTTP ' + projectsRes.status);
@@ -525,29 +514,7 @@
           }
         }
 
-        let manualLinks = [];
-        if (linksRes && linksRes.ok) {
-          try {
-            const raw = await linksRes.json();
-            if (Array.isArray(raw)) {
-              manualLinks = raw
-                .filter(l => l && l.url)
-                .map(l => ({
-                  name: l.title || l.url,
-                  title: l.title,
-                  description: l.description,
-                  icon: l.icon,
-                  url: l.url,
-                  __manual: true
-                }));
-            }
-          } catch (e) {
-            console.warn('links.json parse failed, ignoring:', e);
-          }
-        }
-
-        const autoProjects = Array.isArray(data.projects) ? data.projects : [];
-        allProjects = [...manualLinks, ...autoProjects];
+        allProjects = Array.isArray(data.projects) ? data.projects : [];
 
         const count = allProjects.length;
         taglineEl.innerHTML =
