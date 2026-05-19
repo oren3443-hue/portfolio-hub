@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-05-19T06:45:04Z",
+  "lastUpdated": "2026-05-19T19:41:22Z",
   "owner": {
     "name": "Oren",
     "tagline": "אורן - אוטומציות ופרויקטי AI",
@@ -13,7 +13,16 @@
       "repoUrl": "https://github.com/oren3443-hue/israeli-severance-calculator",
       "language": "JavaScript",
       "stars": 0,
-      "updatedAt": "2026-05-18T16:54:33Z"
+      "updatedAt": "2026-05-19T17:02:18Z"
+    },
+    {
+      "name": "barcode-maker-site",
+      "description": "מחולל ברקודים מאקסל - אפליקציית ווב סטטית שמייצרת PDF של ברקודים מקובץ Excel",
+      "url": "https://oren3443-hue.github.io/barcode-maker-site/",
+      "repoUrl": "https://github.com/oren3443-hue/barcode-maker-site",
+      "language": "HTML",
+      "stars": 0,
+      "updatedAt": "2026-05-19T16:35:35Z"
     },
     {
       "name": "payslip-manager",
