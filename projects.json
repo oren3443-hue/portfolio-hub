@@ -1,11 +1,20 @@
 {
-  "lastUpdated": "2026-05-31T06:56:08Z",
+  "lastUpdated": "2026-06-01T08:31:07Z",
   "owner": {
     "name": "Oren",
     "tagline": "אורן - אוטומציות ופרויקטי AI",
     "githubUsername": "oren3443-hue"
   },
   "projects": [
+    {
+      "name": "holidays-eligibility-2026",
+      "description": "Pesach eligibility calculator 2026 - static site",
+      "url": "https://oren3443-hue.github.io/holidays-eligibility-2026/",
+      "repoUrl": "https://github.com/oren3443-hue/holidays-eligibility-2026",
+      "language": "JavaScript",
+      "stars": 0,
+      "updatedAt": "2026-05-31T15:43:47Z"
+    },
     {
       "name": "israeli-severance-calculator",
       "description": "מחשבון פיצויי פיטורים לפי החוק הישראלי – לחשבי שכר ויועצים. תומך ביבוא Excel ממיכפל.",
@@ -59,15 +68,6 @@
       "language": "TypeScript",
       "stars": 0,
       "updatedAt": "2026-05-05T22:48:42Z"
-    },
-    {
-      "name": "holidays-eligibility-2026",
-      "description": "Pesach eligibility calculator 2026 - static site",
-      "url": "https://oren3443-hue.github.io/holidays-eligibility-2026/",
-      "repoUrl": "https://github.com/oren3443-hue/holidays-eligibility-2026",
-      "language": "JavaScript",
-      "stars": 0,
-      "updatedAt": "2026-04-27T18:19:43Z"
     }
   ]
 }
