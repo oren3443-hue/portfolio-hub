@@ -1,11 +1,20 @@
 {
-  "lastUpdated": "2026-06-04T07:22:02Z",
+  "lastUpdated": "2026-06-05T07:05:42Z",
   "owner": {
     "name": "Oren",
     "tagline": "אורן - אוטומציות ופרויקטי AI",
     "githubUsername": "oren3443-hue"
   },
   "projects": [
+    {
+      "name": "payroll-audit",
+      "description": "ביקורת שכר — אתר client-side לבדיקת פערים בין נוכחות לתלושי שכר",
+      "url": "https://oren3443-hue.github.io/payroll-audit/",
+      "repoUrl": "https://github.com/oren3443-hue/payroll-audit",
+      "language": "TypeScript",
+      "stars": 0,
+      "updatedAt": "2026-06-04T12:31:29Z"
+    },
     {
       "name": "holidays-eligibility-2026",
       "description": "Pesach eligibility calculator 2026 - static site",
@@ -59,15 +68,6 @@
       "language": "JavaScript",
       "stars": 0,
       "updatedAt": "2026-05-06T00:15:07Z"
-    },
-    {
-      "name": "payroll-audit",
-      "description": "ביקורת שכר — אתר client-side לבדיקת פערים בין נוכחות לתלושי שכר",
-      "url": "https://oren3443-hue.github.io/payroll-audit/",
-      "repoUrl": "https://github.com/oren3443-hue/payroll-audit",
-      "language": "TypeScript",
-      "stars": 0,
-      "updatedAt": "2026-05-05T22:48:42Z"
     }
   ]
 }
