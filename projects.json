@@ -1,11 +1,20 @@
 {
-  "lastUpdated": "2026-06-09T06:46:17Z",
+  "lastUpdated": "2026-06-10T07:06:44Z",
   "owner": {
     "name": "Oren",
     "tagline": "אורן - אוטומציות ופרויקטי AI",
     "githubUsername": "oren3443-hue"
   },
   "projects": [
+    {
+      "name": "payslip-manager",
+      "description": "מערכת ניהול תלושי שכר - פיצול, מיון ושליחה",
+      "url": "https://oren3443-hue.github.io/payslip-manager/",
+      "repoUrl": "https://github.com/oren3443-hue/payslip-manager",
+      "language": "HTML",
+      "stars": 0,
+      "updatedAt": "2026-06-09T10:57:29Z"
+    },
     {
       "name": "payroll-audit",
       "description": "ביקורת שכר — אתר client-side לבדיקת פערים בין נוכחות לתלושי שכר",
@@ -41,15 +50,6 @@
       "language": "HTML",
       "stars": 0,
       "updatedAt": "2026-05-19T16:35:35Z"
-    },
-    {
-      "name": "payslip-manager",
-      "description": "מערכת ניהול תלושי שכר - פיצול, מיון ושליחה",
-      "url": "https://oren3443-hue.github.io/payslip-manager/",
-      "repoUrl": "https://github.com/oren3443-hue/payslip-manager",
-      "language": "HTML",
-      "stars": 0,
-      "updatedAt": "2026-05-14T00:20:56Z"
     },
     {
       "name": "pension-eligibility-tool",
