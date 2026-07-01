@@ -1,32 +1,30 @@
 {
   "payslip-manager": {
     "title": "מנהל תלושי שכר",
-    "description": "פיצול, מיון ושליחה אוטומטית של תלושים",
     "icon": "💰"
   },
   "pension-eligibility-tool": {
     "title": "בודק זכאות פנסיה",
-    "description": "בדיקת זכאות לפנסיה מתוך תלושי שכר",
     "icon": "📋"
   },
   "recruiter-sender": {
     "title": "שליחת WhatsApp לגיוס",
-    "description": "הודעות תבנית Glassix ללידים מ-Facebook",
     "icon": "📱"
   },
   "payroll-audit": {
     "title": "ביקורת שכר",
-    "description": "בדיקת פערים בין נוכחות לתלושי שכר",
     "icon": "🧾"
   },
   "holidays-eligibility-2026": {
     "title": "זכאות חגים 2026",
-    "description": "מחשבון הטבת חג פסח לשנת 2026",
     "icon": "🎉"
   },
   "israeli-severance-calculator": {
     "title": "מחשבון פיצויי פיטורים",
-    "description": "חישוב פיצויים לפי החוק הישראלי, כולל יבוא Excel ממיכפל",
     "icon": "💼"
+  },
+  "barcode-maker-site": {
+    "title": "מחולל ברקודים מאקסל",
+    "icon": "🏷️"
   }
 }
