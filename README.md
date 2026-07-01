@@ -2,7 +2,7 @@
 
 תיק עבודות שמתעדכן אוטומטית. סטטי, מתארח ב-GitHub Pages, ומציג כל ריפו ציבורי עם Pages פעיל.
 
-🌐 **האתר החי:** https://oren3443-hue.github.io/portfolio-hub/
+🌐 **האתר החי:** https://madebyoren.com (הכתובת הישנה oren3443-hue.github.io/portfolio-hub מפנה לשם אוטומטית)
 
 ## קבצים בריפו
 
