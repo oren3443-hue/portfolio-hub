@@ -1,11 +1,38 @@
 {
-  "lastUpdated": "2026-07-01T07:08:03Z",
+  "lastUpdated": "2026-07-02T06:37:44Z",
   "owner": {
     "name": "Oren",
     "tagline": "אורן - אוטומציות ופרויקטי AI",
     "githubUsername": "oren3443-hue"
   },
   "projects": [
+    {
+      "name": "holidays-eligibility-2026",
+      "description": "מחשבון הטבת חג פסח לשנת 2026",
+      "url": "https://oren3443-hue.github.io/holidays-eligibility-2026/",
+      "repoUrl": "https://github.com/oren3443-hue/holidays-eligibility-2026",
+      "language": "JavaScript",
+      "stars": 0,
+      "updatedAt": "2026-07-01T21:57:15Z"
+    },
+    {
+      "name": "recruiter-sender",
+      "description": "שליחת הודעות WhatsApp (תבניות Glassix) ללידים מפייסבוק",
+      "url": "https://oren3443-hue.github.io/recruiter-sender/",
+      "repoUrl": "https://github.com/oren3443-hue/recruiter-sender",
+      "language": "JavaScript",
+      "stars": 0,
+      "updatedAt": "2026-07-01T21:57:14Z"
+    },
+    {
+      "name": "pension-eligibility-tool",
+      "description": "בדיקת זכאות לפנסיה מתוך תלושי שכר",
+      "url": "https://oren3443-hue.github.io/pension-eligibility-tool/",
+      "repoUrl": "https://github.com/oren3443-hue/pension-eligibility-tool",
+      "language": "TypeScript",
+      "stars": 0,
+      "updatedAt": "2026-07-01T21:57:14Z"
+    },
     {
       "name": "payslip-manager",
       "description": "מערכת ניהול תלושי שכר - פיצול, מיון ושליחה",
@@ -25,15 +52,6 @@
       "updatedAt": "2026-06-08T16:44:22Z"
     },
     {
-      "name": "holidays-eligibility-2026",
-      "description": "Pesach eligibility calculator 2026 - static site",
-      "url": "https://oren3443-hue.github.io/holidays-eligibility-2026/",
-      "repoUrl": "https://github.com/oren3443-hue/holidays-eligibility-2026",
-      "language": "JavaScript",
-      "stars": 0,
-      "updatedAt": "2026-05-31T15:43:47Z"
-    },
-    {
       "name": "israeli-severance-calculator",
       "description": "מחשבון פיצויי פיטורים לפי החוק הישראלי – לחשבי שכר ויועצים. תומך ביבוא Excel ממיכפל.",
       "url": "https://oren3443-hue.github.io/israeli-severance-calculator/",
@@ -50,24 +68,6 @@
       "language": "HTML",
       "stars": 0,
       "updatedAt": "2026-05-19T16:35:35Z"
-    },
-    {
-      "name": "pension-eligibility-tool",
-      "description": "Pension eligibility review tool for Israeli payroll",
-      "url": "https://oren3443-hue.github.io/pension-eligibility-tool/",
-      "repoUrl": "https://github.com/oren3443-hue/pension-eligibility-tool",
-      "language": "TypeScript",
-      "stars": 0,
-      "updatedAt": "2026-05-12T16:59:44Z"
-    },
-    {
-      "name": "recruiter-sender",
-      "description": "Recruiter UI for sending Glassix WhatsApp template messages to FB leads from Google Sheets",
-      "url": "https://oren3443-hue.github.io/recruiter-sender/",
-      "repoUrl": "https://github.com/oren3443-hue/recruiter-sender",
-      "language": "JavaScript",
-      "stars": 0,
-      "updatedAt": "2026-05-06T00:15:07Z"
     }
   ]
 }
