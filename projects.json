@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-07-05T06:36:57Z",
+  "lastUpdated": "2026-07-06T07:07:51Z",
   "owner": {
     "name": "Oren",
     "tagline": "אורן - אוטומציות ופרויקטי AI",
@@ -7,13 +7,22 @@
   },
   "projects": [
     {
-      "name": "holidays-eligibility-2026",
-      "description": "מחשבון הטבת חג פסח לשנת 2026",
-      "url": "https://oren3443-hue.github.io/holidays-eligibility-2026/",
-      "repoUrl": "https://github.com/oren3443-hue/holidays-eligibility-2026",
-      "language": "JavaScript",
+      "name": "payslip-manager",
+      "description": "מערכת ניהול תלושי שכר - פיצול, מיון ושליחה",
+      "url": "https://oren3443-hue.github.io/payslip-manager/",
+      "repoUrl": "https://github.com/oren3443-hue/payslip-manager",
+      "language": "HTML",
       "stars": 0,
-      "updatedAt": "2026-07-01T21:57:15Z"
+      "updatedAt": "2026-07-05T22:36:30Z"
+    },
+    {
+      "name": "barcode-maker-site",
+      "description": "מחולל ברקודים מאקסל - אפליקציית ווב סטטית שמייצרת PDF של ברקודים מקובץ Excel",
+      "url": "https://oren3443-hue.github.io/barcode-maker-site/",
+      "repoUrl": "https://github.com/oren3443-hue/barcode-maker-site",
+      "language": "HTML",
+      "stars": 0,
+      "updatedAt": "2026-07-05T21:04:12Z"
     },
     {
       "name": "recruiter-sender",
@@ -34,15 +43,6 @@
       "updatedAt": "2026-07-01T21:57:14Z"
     },
     {
-      "name": "payslip-manager",
-      "description": "מערכת ניהול תלושי שכר - פיצול, מיון ושליחה",
-      "url": "https://oren3443-hue.github.io/payslip-manager/",
-      "repoUrl": "https://github.com/oren3443-hue/payslip-manager",
-      "language": "HTML",
-      "stars": 0,
-      "updatedAt": "2026-06-11T14:41:27Z"
-    },
-    {
       "name": "payroll-audit",
       "description": "ביקורת שכר — אתר client-side לבדיקת פערים בין נוכחות לתלושי שכר",
       "url": "https://oren3443-hue.github.io/payroll-audit/",
@@ -50,24 +50,6 @@
       "language": "TypeScript",
       "stars": 0,
       "updatedAt": "2026-06-08T16:44:22Z"
-    },
-    {
-      "name": "israeli-severance-calculator",
-      "description": "מחשבון פיצויי פיטורים לפי החוק הישראלי – לחשבי שכר ויועצים. תומך ביבוא Excel ממיכפל.",
-      "url": "https://oren3443-hue.github.io/israeli-severance-calculator/",
-      "repoUrl": "https://github.com/oren3443-hue/israeli-severance-calculator",
-      "language": "JavaScript",
-      "stars": 0,
-      "updatedAt": "2026-05-25T11:18:58Z"
-    },
-    {
-      "name": "barcode-maker-site",
-      "description": "מחולל ברקודים מאקסל - אפליקציית ווב סטטית שמייצרת PDF של ברקודים מקובץ Excel",
-      "url": "https://oren3443-hue.github.io/barcode-maker-site/",
-      "repoUrl": "https://github.com/oren3443-hue/barcode-maker-site",
-      "language": "HTML",
-      "stars": 0,
-      "updatedAt": "2026-05-19T16:35:35Z"
     }
   ]
 }
