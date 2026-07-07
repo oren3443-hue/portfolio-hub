@@ -1,20 +1,11 @@
 {
-  "lastUpdated": "2026-07-06T07:07:51Z",
+  "lastUpdated": "2026-07-07T06:42:12Z",
   "owner": {
     "name": "Oren",
     "tagline": "אורן - אוטומציות ופרויקטי AI",
     "githubUsername": "oren3443-hue"
   },
   "projects": [
-    {
-      "name": "payslip-manager",
-      "description": "מערכת ניהול תלושי שכר - פיצול, מיון ושליחה",
-      "url": "https://oren3443-hue.github.io/payslip-manager/",
-      "repoUrl": "https://github.com/oren3443-hue/payslip-manager",
-      "language": "HTML",
-      "stars": 0,
-      "updatedAt": "2026-07-05T22:36:30Z"
-    },
     {
       "name": "barcode-maker-site",
       "description": "מחולל ברקודים מאקסל - אפליקציית ווב סטטית שמייצרת PDF של ברקודים מקובץ Excel",
