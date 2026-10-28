@@ -1,11 +1,20 @@
 {
-  "lastUpdated": "2026-10-27T08:35:17Z",
+  "lastUpdated": "2026-10-28T09:14:18Z",
   "owner": {
     "name": "Oren",
     "tagline": "אורן - אוטומציות ופרויקטי AI",
     "githubUsername": "oren3443-hue"
   },
   "projects": [
+    {
+      "name": "pension-eligibility-tool",
+      "description": "בדיקת זכאות לפנסיה מתוך תלושי שכר",
+      "url": "https://oren3443-hue.github.io/pension-eligibility-tool/",
+      "repoUrl": "https://github.com/oren3443-hue/pension-eligibility-tool",
+      "language": "TypeScript",
+      "stars": 0,
+      "updatedAt": "2026-10-27T19:12:58Z"
+    },
     {
       "name": "barcode-maker-site",
       "description": "מחולל ברקודים מאקסל - אפליקציית ווב סטטית שמייצרת PDF של ברקודים מקובץ Excel",
@@ -21,15 +30,6 @@
       "url": "https://oren3443-hue.github.io/recruiter-sender/",
       "repoUrl": "https://github.com/oren3443-hue/recruiter-sender",
       "language": "JavaScript",
-      "stars": 0,
-      "updatedAt": "2026-07-01T21:57:14Z"
-    },
-    {
-      "name": "pension-eligibility-tool",
-      "description": "בדיקת זכאות לפנסיה מתוך תלושי שכר",
-      "url": "https://oren3443-hue.github.io/pension-eligibility-tool/",
-      "repoUrl": "https://github.com/oren3443-hue/pension-eligibility-tool",
-      "language": "TypeScript",
       "stars": 0,
       "updatedAt": "2026-07-01T21:57:14Z"
     },
